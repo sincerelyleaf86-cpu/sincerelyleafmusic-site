@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sincerely Leaf Music</title>
 
+  <!-- IMPORTANT: no background here (grid comes from styles.css) -->
   <style>
-  html,body{margin:0;padding:0;color:#e9e9f2;}
-  .hidden{display:none !important;}
+    html,body{margin:0;padding:0;color:#e9e9f2;}
+    .hidden{display:none !important;}
   </style>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,13 +20,11 @@
 </head>
 
 <body>
-
   <!-- =========================
        BOOT SCREEN
   ========================== -->
   <section id="boot" class="boot">
     <div class="boot-cover">
-
       <div class="case-header">
         <div class="case-header-left">SINCERELYLEAFMUSIC.COM</div>
         <div class="case-header-right">16-BIT BOOT</div>
@@ -57,8 +56,9 @@
         <span class="startword">START</span>
       </div>
 
+      <!-- Controller with START button -->
       <div class="pad-wrap">
-        <div class="pad">
+        <div class="pad" aria-hidden="true">
           <div class="pad-grip left"></div>
           <div class="pad-grip right"></div>
 
@@ -81,9 +81,7 @@
           </div>
 
           <div class="pad-labels">
-            <span class="lbl">A</span>
-            <span class="lbl">B</span>
-            <span class="lbl">C</span>
+            <span class="lbl">A</span><span class="lbl">B</span><span class="lbl">C</span>
           </div>
         </div>
 
@@ -94,7 +92,6 @@
         <span class="tag-outline">FROM CODE TO CREATIVE — DIGITAL BECOMES HUMAN</span>
         <span class="tag-fill">FROM CODE TO CREATIVE — DIGITAL BECOMES HUMAN</span>
       </p>
-
     </div>
   </section>
 
@@ -102,10 +99,9 @@
        MAIN SITE
   ========================== -->
   <main id="main" class="main hidden">
-
     <header class="topbar">
       <div class="brand">
-        <div class="brand-mark"></div>
+        <div class="brand-mark" aria-hidden="true"></div>
         <div>
           <div class="brand-name" data-text="SINCERELY_LEAF">SINCERELY_LEAF</div>
           <div class="brand-tag">LEVEL SELECT // STUDIO MODE</div>
@@ -123,7 +119,6 @@
       <a class="pill pill-youtube" href="https://youtube.com/@YOURHANDLE" target="_blank" rel="noreferrer">YOUTUBE →</a>
     </header>
 
-    <!-- HERO -->
     <section class="stage" id="videos">
       <div class="stage-left">
         <div class="panel">
@@ -136,13 +131,11 @@
             Sample-based producer blending AI, vinyl, and original composition through the MPC.
           </p>
 
-          <!-- Power buttons stay -->
           <div class="cta-row">
             <a class="power-btn" href="#beats">BEATS</a>
             <a class="power-btn" href="#contact">CONTACT</a>
           </div>
 
-          <!-- Beat player embed target (YOU control via /config.json) -->
           <div class="player-wrap" aria-label="Beat player">
             <div class="player-frame" id="playerSlot">
               <div class="player-empty">
@@ -177,7 +170,6 @@
       </div>
     </section>
 
-    <!-- BEATS -->
     <section id="beats" class="section">
       <div class="section-head">
         <h2 data-text="BEATS">BEATS</h2>
@@ -185,7 +177,6 @@
       </div>
     </section>
 
-    <!-- PACKS -->
     <section id="packs" class="section">
       <div class="section-head">
         <h2 data-text="PACKS">PACKS</h2>
@@ -193,7 +184,6 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about" class="section">
       <div class="section-head">
         <h2 data-text="ABOUT">ABOUT</h2>
@@ -203,7 +193,8 @@
       <div class="about-grid">
         <div class="about-text">
           <p>
-            I build atmosphere from fragments and shape them through the MPC workflow.
+            I build atmosphere from fragments — then give it swing and soul through a hardware workflow.
+            I’ll show the full process: generating, sampling, chopping, arranging, and finishing.
           </p>
           <p class="muted">Collabs open with producers and artists.</p>
         </div>
@@ -214,20 +205,28 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact" class="section">
       <div class="section-head">
         <h2 data-text="CONTACT">CONTACT</h2>
         <p>Collabs + inquiries.</p>
       </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-label">EMAIL</span>
+            <span class="card-chip">PRIMARY</span>
+          </div>
+          <p class="card-body">
+            <a class="inline" href="mailto:contact@sincerelyleafmusic.com">contact@sincerelyleafmusic.com</a>
+          </p>
+        </article>
+      </div>
     </section>
 
-    <!-- Footer: NO extra bottom nav links -->
     <footer class="footer">
       <span>© <span id="year"></span> Sincerely Leaf Music</span>
       <span>MODE: 16-BIT</span>
     </footer>
-
   </main>
 
   <script src="/app.js" defer></script>
