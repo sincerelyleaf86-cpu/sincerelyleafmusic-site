@@ -1,4 +1,10 @@
-<!-- index.html (FULL FILE) -->
+<!-- index.html (FULL FILE)
+  Notes:
+  - Boot screen shows randomized pixel-art cover images (boot_scene_01..12.png).
+  - START button on a Sega-inspired 6-button controller enters the main site.
+  - Main site keeps the same Genesis-case theme + grid background + blue Sega-style headers.
+  - Now Playing embed is controlled ONLY by you via config.json (repo-controlled).
+-->
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,20 +12,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sincerely Leaf Music</title>
 
+  <!-- Minimal safety baseline while CSS loads -->
   <style>
     html,body{margin:0;padding:0;color:#e9e9f2;}
     .hidden{display:none !important;}
   </style>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
 
+  <!-- Main styles -->
   <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
+  <!-- =========================
+       BOOT SCREEN
+  ========================== -->
   <section id="boot" class="boot">
     <div class="boot-cover">
       <div class="case-header">
@@ -38,6 +50,7 @@
         <span class="chip">HUMAN SWING ENABLED</span>
       </div>
 
+      <!-- Boot image rotation area -->
       <div class="art-frame">
         <img
           id="bootScene"
@@ -48,11 +61,17 @@
         />
       </div>
 
+      <!-- Call to action -->
       <div class="press-start">
         <span class="press">PRESS</span>
         <span class="startword">START</span>
       </div>
 
+      <!-- =========================
+           CONTROLLER (Sega-inspired 6-button)
+           - Letters are INSIDE the buttons
+           - Boomerang silhouette via clip-path
+      ========================== -->
       <div class="pad-wrap">
         <div class="pad genesis6" aria-hidden="true">
           <div class="pad-dpad">
@@ -69,19 +88,14 @@
 
           <div class="pad-6btn">
             <div class="btn-row top">
-              <span class="gbtn x"></span>
-              <span class="gbtn y"></span>
-              <span class="gbtn z"></span>
+              <span class="gbtn">X</span>
+              <span class="gbtn">Y</span>
+              <span class="gbtn">Z</span>
             </div>
             <div class="btn-row bot">
-              <span class="gbtn a"></span>
-              <span class="gbtn b"></span>
-              <span class="gbtn c"></span>
-            </div>
-
-            <div class="pad-labels">
-              <span class="lbl x">X</span><span class="lbl y">Y</span><span class="lbl z">Z</span>
-              <span class="lbl a">A</span><span class="lbl b">B</span><span class="lbl c">C</span>
+              <span class="gbtn">A</span>
+              <span class="gbtn">B</span>
+              <span class="gbtn">C</span>
             </div>
           </div>
         </div>
@@ -89,6 +103,7 @@
         <div class="pad-caption">Controller: connected</div>
       </div>
 
+      <!-- Your updated tagline text (dual stroke style) -->
       <p class="boot-tagline">
         <span class="tag-outline">LEVEL UP YOUR SOUND</span>
         <span class="tag-fill">LEVEL UP YOUR SOUND</span>
@@ -96,6 +111,9 @@
     </div>
   </section>
 
+  <!-- =========================
+       MAIN SITE (after boot)
+  ========================== -->
   <main id="main" class="main hidden">
     <header class="topbar">
       <div class="brand">
@@ -106,7 +124,7 @@
         </div>
       </div>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary navigation">
         <a href="#beats" class="nav-link">BEATS</a>
         <a href="#packs" class="nav-link">PACKS</a>
         <a href="#videos" class="nav-link">VIDEOS</a>
@@ -114,9 +132,11 @@
         <a href="#contact" class="nav-link">CONTACT</a>
       </nav>
 
+      <!-- YouTube button (red) -->
       <a class="pill pill-youtube" href="https://youtube.com/@YOURHANDLE" target="_blank" rel="noreferrer">YOUTUBE →</a>
     </header>
 
+    <!-- Main stage: left panel + right panel -->
     <section class="stage" id="videos">
       <div class="stage-left">
         <div class="panel">
@@ -129,16 +149,20 @@
             Sample-based producer blending AI, vinyl, and original composition through the MPC.
           </p>
 
+          <!-- Power buttons (requested) -->
           <div class="cta-row">
             <a class="power-btn" href="#beats">BEATS</a>
             <a class="power-btn" href="#contact">CONTACT</a>
           </div>
 
+          <!-- Player slot (you control via config.json) -->
           <div class="player-wrap" aria-label="Beat player">
             <div class="player-frame" id="playerSlot">
               <div class="player-empty">
                 <div class="player-empty-title">PLAYER NOT SET</div>
-                <div class="player-empty-sub">Edit <strong>config.json</strong> to add your BeatStars/SoundCloud embed.</div>
+                <div class="player-empty-sub">
+                  Edit <strong>config.json</strong> to add your BeatStars/SoundCloud embed URL.
+                </div>
               </div>
             </div>
           </div>
@@ -156,6 +180,7 @@
           <span class="panel-chip">1080p</span>
         </div>
 
+        <!-- YouTube embed (replace YOUR_VIDEO_ID) -->
         <div class="video-wrap">
           <iframe
             title="Sincerely Leaf YouTube"
@@ -173,6 +198,7 @@
         <h2 data-text="BEATS">BEATS</h2>
         <p>Leases / exclusives.</p>
       </div>
+      <!-- Later: paste BeatStars store embed or links here -->
     </section>
 
     <section id="packs" class="section">
@@ -180,6 +206,7 @@
         <h2 data-text="PACKS">PACKS</h2>
         <p>Sample packs + MPC kits.</p>
       </div>
+      <!-- Later: sell packs / Gumroad link / etc. -->
     </section>
 
     <section id="about" class="section">
@@ -198,6 +225,7 @@
         </div>
 
         <div class="about-image">
+          <!-- You choose this image file name -->
           <img src="about_screen.png" alt="About image" />
         </div>
       </div>
@@ -208,6 +236,7 @@
         <h2 data-text="CONTACT">CONTACT</h2>
         <p>Collabs + inquiries.</p>
       </div>
+
       <div class="cards">
         <article class="card">
           <div class="card-top">
@@ -215,7 +244,7 @@
             <span class="card-chip">PRIMARY</span>
           </div>
           <p class="card-body">
-            <a class="inline" href="mailto:contact@sincerelyleafmusic.com">contact@sincerelyleafmusic.com</a>
+            <a class="inline" href="mailto:sincerelyleaf86@gmail.com">sincerelyleaf86@gmail.com</a>
           </p>
         </article>
       </div>

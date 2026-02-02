@@ -1,3 +1,5 @@
 {
+  "//": "config.json (FULL FILE) — Only you can change this because it's in your GitHub repo.",
+  "//2": "Paste an EMBED URL here (BeatStars/SoundCloud/etc). Leave empty to show 'PLAYER NOT SET'.",
   "nowPlayingEmbedUrl": ""
 }

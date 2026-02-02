@@ -1,3 +1,9 @@
+// app.js (FULL FILE)
+// Notes:
+// - Boot image rotates randomly using the list in data-images on #bootScene.
+// - START button hides boot and reveals main.
+// - Now Playing embed is loaded from /config.json (repo-controlled: only you can change it).
+
 document.addEventListener("DOMContentLoaded", () => {
   const startBtn = document.getElementById("startBtn");
   const boot = document.getElementById("boot");
@@ -8,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (year) year.textContent = new Date().getFullYear();
 
-  // Random boot image (12+), avoid repeating last pick
+  // Randomize boot image (avoids repeating last pick)
   if (bootScene) {
     const list = (bootScene.dataset.images || "")
       .split(",")
@@ -35,29 +41,27 @@ document.addEventListener("DOMContentLoaded", () => {
   function enterStudio() {
     if (boot) boot.classList.add("hidden");
     if (main) main.classList.remove("hidden");
+
+    // Optional: jump user to the first panel
     const videos = document.getElementById("videos");
     if (videos) window.location.hash = "#videos";
   }
 
   if (startBtn) startBtn.addEventListener("click", enterStudio);
 
+  // Keyboard support
   document.addEventListener("keydown", (e) => {
     if (!boot || boot.classList.contains("hidden")) return;
     if (e.key === "Enter" || e.key === " ") enterStudio();
   });
 
-  // =========================
-  // OWNER-ONLY EMBED CONTROL
-  // You control player embed by editing /config.json in your repo.
-  // No public UI to edit it.
-  // =========================
+  // Load player embed URL from config.json
   async function loadConfig() {
     try {
       const res = await fetch("/config.json", { cache: "no-store" });
       if (!res.ok) return;
-      const cfg = await res.json();
 
-      // expects cfg.nowPlayingEmbedUrl = "https://...embed..."
+      const cfg = await res.json();
       const url = (cfg.nowPlayingEmbedUrl || "").trim();
 
       if (playerSlot && url) {
@@ -71,8 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
           </iframe>
         `;
       }
-    } catch (err) {
-      // fail silently, keep placeholder
+    } catch {
+      // silent fail: keeps the "PLAYER NOT SET" placeholder
     }
   }
 
