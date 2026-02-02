@@ -3,16 +3,15 @@
   --bg1:#0a0a0f;
   --case:#0a0a0c;
   --case2:#11111a;
+  --panel:rgba(10,10,12,.78);
+  --panel2:rgba(0,0,0,.28);
   --border:rgba(255,255,255,.10);
   --border2:rgba(255,255,255,.12);
   --text:#e9e9f2;
   --muted:#b8b8c9;
   --silver:#c9c9d6;
-
-  /* darker “Genesis blue” */
   --blue:#0f4fc9;
   --blue2:#2c78e6;
-
   --shadow:0 18px 46px rgba(0,0,0,.55);
 }
 
@@ -22,12 +21,7 @@ body{
   margin:0;
   color:var(--text);
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-
-  /* GRID BACKGROUND (brings back the vibe) */
-  background:
-    radial-gradient(1200px 700px at 50% -10%, #1b1b28 0%, #0a0a0f 50%, #050507 100%),
-    repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0, rgba(255,255,255,.035) 1px, transparent 1px, transparent 44px),
-    repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 44px);
+  background: radial-gradient(1200px 700px at 50% -10%, #1b1b28 0%, var(--bg1) 50%, var(--bg0) 100%);
 }
 
 a{color:inherit;text-decoration:none}
@@ -35,7 +29,7 @@ a:hover{opacity:.96}
 .hidden{display:none !important}
 
 /* =========================
-   BOOT
+   BOOT (Genesis-case cover)
    ========================= */
 .boot{
   min-height:100vh;
@@ -205,8 +199,8 @@ a:hover{opacity:.96}
   box-shadow: 0 10px 18px rgba(0,0,0,.45), inset 0 0 0 2px rgba(0,0,0,.65);
 }
 .pad-start:hover{
-  border-color: rgba(44,120,230,.45);
-  box-shadow: 0 12px 22px rgba(0,0,0,.55), 0 0 18px rgba(15,79,201,.22), inset 0 0 0 2px rgba(0,0,0,.65);
+  border-color: rgba(121,214,255,.35);
+  box-shadow: 0 12px 22px rgba(0,0,0,.55), 0 0 18px rgba(46,166,255,.18), inset 0 0 0 2px rgba(0,0,0,.65);
 }
 
 .pad-buttons{position:absolute;right: 40px;top: 54%;transform: translateY(-50%);display:flex;gap:12px;}
@@ -237,11 +231,22 @@ a:hover{opacity:.96}
 }
 
 /* =========================
-   MAIN
+   MAIN THEME: consistent “case” vibe
    ========================= */
 .main{
   min-height:100vh;
   padding: 22px 16px 28px;
+}
+.main::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(1200px 700px at 50% -10%, rgba(27,27,40,.65) 0%, rgba(10,10,15,.55) 50%, rgba(5,5,7,.65) 100%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0, rgba(255,255,255,.02) 1px, transparent 1px, transparent 42px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0, rgba(255,255,255,.015) 1px, transparent 1px, transparent 42px);
+  pointer-events:none;
+  z-index:-1;
 }
 
 .topbar{
@@ -256,30 +261,21 @@ a:hover{opacity:.96}
 }
 .brand{display:flex; gap:10px; align-items:center}
 .brand-mark{width:10px;height:10px;border-radius:2px;background:var(--blue)}
+.brand-name{font-weight:900; letter-spacing:.10em}
 .brand-tag{color:var(--muted); font-size:12px}
 .nav{display:flex; gap:10px; flex-wrap:wrap}
 .nav-link{color:var(--text); opacity:.88; padding:8px 10px; border-radius:10px; border:1px solid transparent}
-.nav-link:hover{border-color: rgba(44,120,230,.35); opacity:1}
-
-/* YouTube button becomes RED */
+.nav-link:hover{border-color: rgba(121,214,255,.28); opacity:1}
 .pill{
   padding:9px 12px;
   border-radius:999px;
-  border:1px solid rgba(44,120,230,.28);
-  background: linear-gradient(180deg, rgba(15,79,201,.10), rgba(0,0,0,.18));
+  border:1px solid rgba(121,214,255,.28);
+  background: linear-gradient(180deg, rgba(46,166,255,.10), rgba(0,0,0,.18));
   color:var(--text);
   box-shadow: 0 12px 24px rgba(0,0,0,.35);
 }
-.pill-youtube{
-  border-color: rgba(255,90,90,.45);
-  background: linear-gradient(180deg, rgba(255,70,70,.22), rgba(0,0,0,.18));
-  box-shadow: 0 12px 24px rgba(0,0,0,.35), 0 0 22px rgba(255,70,70,.12);
-}
-.pill-youtube:hover{
-  border-color: rgba(255,120,120,.65);
-  box-shadow: 0 14px 28px rgba(0,0,0,.45), 0 0 26px rgba(255,70,70,.18);
-}
 
+/* Stage layout */
 .stage{
   width:min(1120px, 96vw);
   margin:0 auto;
@@ -309,9 +305,14 @@ a:hover{opacity:.96}
   opacity:.65;
 }
 
+.panel.mini{margin-top:12px}
+
 .panel-head{display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px}
+.panel-title{font-family:"Press Start 2P", monospace; font-size:11px; color:var(--silver)}
 .panel-chip{font-size:11px; color:var(--muted)}
 .panel-lead{line-height:1.6; color: var(--text)}
+.muted{color:var(--muted)}
+.tiny{color:var(--muted); font-size:12px; margin-top:10px}
 
 .video-wrap{
   border-radius: 12px;
@@ -322,71 +323,76 @@ a:hover{opacity:.96}
 }
 .video-wrap iframe{width:100%; aspect-ratio:16/9; display:block}
 
-/* Power buttons row */
-.cta-row{display:flex; gap:14px; flex-wrap:wrap; margin-top:12px;}
-.power-btn{
+/* =========================
+   Cartridge buttons (BEATS + COLLAB)
+   ========================= */
+.cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top: 10px}
+
+.cart{
+  --cartTop:#1a1a24;
+  --cartBot:#0a0a0f;
+
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:10px;
-  width:150px;
-  height:50px;
-  border-radius:999px;
-  background: linear-gradient(180deg, #2b2b35, #14141a);
-  border:3px solid rgba(255,255,255,.12);
-  box-shadow: 0 16px 26px rgba(0,0,0,.5), inset 0 0 0 2px rgba(0,0,0,.65);
-  font-family:"Press Start 2P", monospace;
-  font-size:11px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--silver);
-  cursor:pointer;
-  position:relative;
-  transition: all .2s ease;
-}
-.power-btn::before{
-  content:"";
-  position:absolute;
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  background: radial-gradient(circle at 30% 30%, #ffd3d3, #ff3c3c);
-  left:16px;
-  box-shadow: 0 0 12px rgba(255,60,60,.45);
-}
-.power-btn:hover{
-  border-color: rgba(255,120,120,.6);
-  box-shadow: 0 18px 30px rgba(0,0,0,.6), 0 0 20px rgba(255,60,60,.18), inset 0 0 0 2px rgba(0,0,0,.65);
-}
 
-/* Player area inside Now Playing */
-.player-wrap{margin-top:14px}
-.player-frame{
+  min-height: 44px;
+  padding: 12px 14px;
   border-radius: 12px;
-  border: 2px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.35);
-  box-shadow: inset 0 0 0 2px rgba(0,0,0,.55);
-  overflow:hidden;
-  min-height: 140px;
-}
-.player-frame iframe{
-  width:100%;
-  height: 170px;
-  display:block;
-  border:0;
-}
-.player-empty{
-  padding: 18px;
-  text-align:center;
-}
-.player-empty-title{
+
+  border: 2px solid rgba(255,255,255,.14);
+  background: linear-gradient(180deg, var(--cartTop), var(--cartBot));
+  color: var(--text);
+
   font-family:"Press Start 2P", monospace;
   font-size: 11px;
-  letter-spacing:.10em;
-  color: var(--silver);
-  margin-bottom: 8px;
+  letter-spacing:.08em;
+  text-transform: uppercase;
+
+  box-shadow: 0 16px 26px rgba(0,0,0,.45), inset 0 0 0 2px rgba(0,0,0,.65);
+  position:relative;
 }
-.player-empty-sub{color: var(--muted); font-size: 12px; line-height: 1.5;}
+
+.cart::before{
+  content:"";
+  position:absolute;
+  left:10px; right:10px; top:10px;
+  height: 10px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(46,166,255,.35), rgba(121,214,255,.12));
+  border: 1px solid rgba(121,214,255,.28);
+  opacity:.9;
+}
+.cart::after{
+  content:"";
+  position:absolute;
+  left:12px; right:12px; bottom:10px;
+  height: 10px;
+  border-radius: 6px;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.10) 0, rgba(255,255,255,.10) 2px, rgba(0,0,0,.0) 2px, rgba(0,0,0,.0) 7px);
+  border: 1px solid rgba(255,255,255,.10);
+  opacity:.55;
+}
+
+.cart .spine{
+  width: 10px;
+  height: 28px;
+  border-radius: 6px;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,.18) 0, rgba(255,255,255,.18) 2px, rgba(0,0,0,0) 2px, rgba(0,0,0,0) 6px);
+  border: 1px solid rgba(255,255,255,.14);
+  opacity:.75;
+}
+
+.cart:hover{
+  border-color: rgba(121,214,255,.40);
+  box-shadow: 0 18px 30px rgba(0,0,0,.55), 0 0 22px rgba(46,166,255,.20), inset 0 0 0 2px rgba(0,0,0,.65);
+}
+
+.cart.beats{ --cartTop:#1b1b28; --cartBot:#0a0a10; }
+.cart.collab{ --cartTop:#1a1a24; --cartBot:#08080c; }
 
 /* Statusbar */
 .statusbar{
@@ -401,7 +407,7 @@ a:hover{opacity:.96}
 .statusbar .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--blue2);margin-right:8px}
 .sep{margin:0 10px; opacity:.6}
 
-/* Sections */
+/* Sections + cards */
 .section{
   width:min(1120px, 96vw);
   margin:16px auto 0;
@@ -424,10 +430,42 @@ a:hover{opacity:.96}
   pointer-events:none;
   opacity:.55;
 }
+.section-head{position:relative}
+.section-head h2{margin:0 0 8px; font-family:"Press Start 2P", monospace; font-size:13px}
 .section-head p{margin:0; color:var(--muted); line-height:1.5}
 
+.cards{
+  position:relative;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:12px;
+  margin-top:12px
+}
+@media (max-width: 860px){ .cards{grid-template-columns:1fr;} }
+
+.card{
+  border-radius: 14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,.18));
+  padding: 14px;
+  box-shadow: 0 12px 22px rgba(0,0,0,.35);
+}
+.card-top{display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;}
+.card-label{font-family:"Press Start 2P", monospace; font-size:11px; opacity:.92;}
+.card-chip{
+  font-size:11px;
+  padding:6px 10px;
+  border-radius:999px;
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  color: var(--muted);
+}
+.card-body{margin:0; color:var(--muted); line-height:1.55}
+.card-link{display:inline-block; margin-top:10px; font-weight:800; letter-spacing:.04em}
+.inline{color:var(--blue2)}
+
 /* About */
-.about-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:12px; margin-top:12px}
+.about-grid{position:relative; display:grid; grid-template-columns: 1.1fr .9fr; gap:12px; margin-top:12px}
 @media (max-width: 980px){ .about-grid{grid-template-columns:1fr;} }
 .about-text{
   border-radius:14px;
@@ -436,6 +474,7 @@ a:hover{opacity:.96}
   padding: 14px;
 }
 .about-text p{margin:0 0 10px; line-height:1.7}
+
 .about-image img{
   width:100%;
   max-width: 520px;
@@ -447,7 +486,7 @@ a:hover{opacity:.96}
   box-shadow: 0 16px 30px rgba(0,0,0,.45);
 }
 
-/* Footer (no bottom nav links) */
+/* Footer */
 .footer{
   width:min(1120px, 96vw);
   margin:18px auto 0;
@@ -458,10 +497,62 @@ a:hover{opacity:.96}
   font-size:12px;
   flex-wrap:wrap
 }
+.cta-row{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
 
-/* =========================
-   SEGA STROKE TEXT (MAIN)
-   ========================= */
+.power-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  width:150px;
+  height:50px;
+
+  border-radius:999px;
+  background: linear-gradient(180deg, #2b2b35, #14141a);
+  border:3px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 16px 26px rgba(0,0,0,.5),
+    inset 0 0 0 2px rgba(0,0,0,.65);
+
+  font-family:"Press Start 2P", monospace;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--silver);
+
+  cursor:pointer;
+  position:relative;
+  transition: all .2s ease;
+}
+
+.power-btn::before{
+  content:"";
+  position:absolute;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, #79d6ff, #2ea6ff);
+  left:16px;
+  box-shadow: 0 0 12px rgba(46,166,255,.6);
+}
+
+.power-btn:hover{
+  border-color: rgba(121,214,255,.5);
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.6),
+    0 0 20px rgba(46,166,255,.25),
+    inset 0 0 0 2px rgba(0,0,0,.65);
+}
+<div class="cta-row">
+  <a class="power-btn" href="#beats">BEATS</a>
+  <a class="power-btn" href="#contact">CONTACT</a>
+</div>
 .section-head h2{
   position:relative;
   display:inline-block;
@@ -474,6 +565,7 @@ a:hover{opacity:.96}
   -webkit-text-stroke:5px var(--blue);
   filter: drop-shadow(0 3px 0 rgba(0,0,0,.65));
 }
+
 .section-head h2::after{
   content:attr(data-text);
   position:absolute;
@@ -484,7 +576,6 @@ a:hover{opacity:.96}
   opacity:.98;
   pointer-events:none;
 }
-
 .brand-name,
 .panel-title{
   position:relative;
@@ -496,6 +587,7 @@ a:hover{opacity:.96}
   -webkit-text-stroke:4px var(--blue);
   filter: drop-shadow(0 3px 0 rgba(0,0,0,.65));
 }
+
 .brand-name::after,
 .panel-title::after{
   content:attr(data-text);
@@ -505,4 +597,8 @@ a:hover{opacity:.96}
   color:transparent;
   -webkit-text-stroke:2px var(--blue2);
   pointer-events:none;
+}
+/* Make main transparent so grid shows */
+.main {
+  background: transparent;
 }
