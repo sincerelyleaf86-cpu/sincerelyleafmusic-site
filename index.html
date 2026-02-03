@@ -2,6 +2,8 @@
   Notes:
   - Boot screen shows randomized pixel-art cover images (boot_scene_01..12.png).
   - START button on a Sega-inspired 6-button controller enters the main site.
+  - This revision switches the controller to a "safe" 6-button silhouette that will NOT clip buttons on mobile.
+    (No clip-path boomerang; instead: a solid controller body + right-side bulge panel.)
   - Main site keeps the same Genesis-case theme + grid background + blue Sega-style headers.
   - Now Playing embed is controlled ONLY by you via config.json (repo-controlled).
 -->
@@ -68,9 +70,11 @@
       </div>
 
       <!-- =========================
-           CONTROLLER (Sega-inspired 6-button)
-           - Letters are INSIDE the buttons
-           - Boomerang silhouette via clip-path
+           CONTROLLER (Stable 6-button controller)
+           Fixes:
+           - No more "floating" right-side buttons
+           - Controller body includes a dedicated right bulge panel behind the buttons
+           - Safer layout for mobile (no clipping masks that cut off children)
       ========================== -->
       <div class="pad-wrap">
         <div class="pad genesis6" aria-hidden="true">
@@ -198,7 +202,6 @@
         <h2 data-text="BEATS">BEATS</h2>
         <p>Leases / exclusives.</p>
       </div>
-      <!-- Later: paste BeatStars store embed or links here -->
     </section>
 
     <section id="packs" class="section">
@@ -206,7 +209,6 @@
         <h2 data-text="PACKS">PACKS</h2>
         <p>Sample packs + MPC kits.</p>
       </div>
-      <!-- Later: sell packs / Gumroad link / etc. -->
     </section>
 
     <section id="about" class="section">
@@ -225,7 +227,6 @@
         </div>
 
         <div class="about-image">
-          <!-- You choose this image file name -->
           <img src="about_screen.png" alt="About image" />
         </div>
       </div>

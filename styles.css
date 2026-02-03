@@ -1,9 +1,8 @@
 /* styles.css (FULL FILE)
   Notes:
-  - Background grid is on the BODY plus an extra fixed grid overlay for the MAIN page.
-  - Boot cover uses a “Genesis case” vibe.
-  - Controller uses clip-path boomerang silhouette (not a long pill).
-  - Button letters are inside the button elements.
+  - This version REMOVES the clip-path boomerang because it can clip child elements (buttons) in some browsers.
+  - Instead, it draws a solid controller body AND a dedicated right "button bulge" panel behind the 6 buttons.
+  - Result: no floating buttons, no clipping, more “real controller” silhouette, stable on mobile.
 */
 
 :root{
@@ -180,7 +179,7 @@ html, body{
 }
 @keyframes blink{50%{opacity:.25}}
 
-/* ===== GENESIS 6-BUTTON CONTROLLER (BOOMERANG + LETTERS INSIDE BUTTONS) ===== */
+/* ===== STABLE 6-BUTTON CONTROLLER (NO CLIPPING, NO FLOATING BUTTONS) ===== */
 
 .pad-wrap{
   display:grid;
@@ -189,43 +188,38 @@ html, body{
   padding: 10px 16px 10px;
 }
 
-/* The visible controller body is drawn by ::before and ::after.
-   The .pad element itself is just a positioning box. */
 .pad.genesis6{
   position:relative;
   width:min(560px, 96%);
   height: clamp(130px, 20vw, 170px);
+  margin: 0 auto;
 }
 
-/* Outer body (boomerang silhouette) */
+/* Main controller body */
 .pad.genesis6::before{
   content:"";
   position:absolute;
   inset:0;
+  border-radius: 88px;
   background: linear-gradient(180deg, #2b2b35, #14141a);
   border: 3px solid rgba(255,255,255,.12);
   box-shadow: 0 22px 60px rgba(0,0,0,.62), inset 0 0 0 2px rgba(0,0,0,.65);
   pointer-events:none;
+}
 
-  /* Boomerang shape:
-     - bigger ends, slightly tighter center
-     - tweak points if you want more “real” curvature */
-  clip-path: polygon(
-    6% 22%,
-    20% 10%,
-    40% 6%,
-    60% 6%,
-    80% 10%,
-    94% 22%,
-    98% 50%,
-    94% 78%,
-    80% 90%,
-    60% 94%,
-    40% 94%,
-    20% 90%,
-    6% 78%,
-    2% 50%
-  );
+/* Right-side bulge panel to "own" the 6 buttons (prevents floating look) */
+.pad.genesis6 .pad-6btn::before{
+  content:"";
+  position:absolute;
+  inset:-18px -18px -18px -22px;
+  border-radius: 90px;
+  background:
+    radial-gradient(260px 180px at 30% 30%, rgba(255,255,255,.12), rgba(255,255,255,0) 62%),
+    linear-gradient(180deg, #2f2f3a, #14141a);
+  border: 2px solid rgba(255,255,255,.10);
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.62);
+  pointer-events:none;
+  z-index:0;
 }
 
 /* Inner trim */
@@ -233,30 +227,14 @@ html, body{
   content:"";
   position:absolute;
   inset: 10px;
+  border-radius: 78px;
   border: 1px solid rgba(255,255,255,.10);
   box-shadow: inset 0 0 0 2px rgba(0,0,0,.55);
   pointer-events:none;
   opacity:.85;
-
-  clip-path: polygon(
-    7% 24%,
-    20% 12%,
-    40% 8%,
-    60% 8%,
-    80% 12%,
-    93% 24%,
-    97% 50%,
-    93% 76%,
-    80% 88%,
-    60% 92%,
-    40% 92%,
-    20% 88%,
-    7% 76%,
-    3% 50%
-  );
 }
 
-/* Ensure controller parts render above body */
+/* Bring all children above the body */
 .pad.genesis6 > *{
   position:relative;
   z-index:2;
@@ -313,20 +291,23 @@ html, body{
 /* 6-button cluster (tilted) */
 .pad.genesis6 .pad-6btn{
   position:absolute;
-  right: clamp(26px, 4vw, 56px);
+  right: clamp(22px, 4vw, 48px);
   top: 50%;
   transform: translateY(-50%) rotate(-12deg);
-  width: clamp(150px, 26vw, 210px);
-  height: clamp(90px, 14vw, 122px);
+  width: clamp(160px, 28vw, 220px);
+  height: clamp(94px, 14vw, 130px);
+  z-index:2;
 }
 
+/* Layout rows */
 .pad.genesis6 .btn-row{
   position:absolute;
   display:flex;
   gap: clamp(10px, 1.3vw, 14px);
+  z-index:1;
 }
-.pad.genesis6 .btn-row.top{ top: 12px; right: 0; }
-.pad.genesis6 .btn-row.bot{ bottom: 12px; right: 10px; }
+.pad.genesis6 .btn-row.top{ top: 16px; right: 18px; }
+.pad.genesis6 .btn-row.bot{ bottom: 16px; right: 28px; }
 
 /* Buttons with letters INSIDE */
 .pad.genesis6 .gbtn{
