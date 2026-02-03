@@ -183,8 +183,9 @@ html, body{
 .pad.svg6{
   position:relative;
   width:min(520px, 96%);
-  aspect-ratio: 820 / 560; /* increased height */
+  aspect-ratio: 820 / 300; /* gives a bit more room so the stretched SVG fits */
   margin: 0 auto;
+  overflow: visible; /* important: prevents clipping of the stretched body */
 }
 
 /* The silhouette is the controller body */
@@ -195,6 +196,10 @@ html, body{
   height:100%;
   display:block;
   z-index:0;
+
+  /* Make the controller BODY taller without moving the buttons */
+  transform: scaleY(1.45);
+  transform-origin: 50% 50%;
 }
 
 /* Keep controls above SVG */
