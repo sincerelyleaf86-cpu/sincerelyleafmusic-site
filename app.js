@@ -1,5 +1,4 @@
-// app.js (FULL FILE)
-
+// app.js (FULL FILE) — REPLACE ENTIRE FILE WITH THIS
 document.addEventListener("DOMContentLoaded", () => {
   const startBtn = document.getElementById("startBtn");
   const boot = document.getElementById("boot");

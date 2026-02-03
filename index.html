@@ -1,9 +1,4 @@
-<!-- index.html (FULL FILE)
-  Notes:
-  - Controller body is now a single inline SVG (clean silhouette) so nothing floats/clips.
-  - Buttons/D-pad/Start are HTML elements positioned on top.
-  - This is the most stable way to get a “decent controller” look across desktop + mobile.
--->
+<!-- index.html (FULL FILE) — REPLACE ENTIRE FILE WITH THIS -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -25,6 +20,7 @@
 </head>
 
 <body>
+  <!-- ========================= BOOT SCREEN ========================= -->
   <section id="boot" class="boot">
     <div class="boot-cover">
       <div class="case-header">
@@ -58,13 +54,11 @@
         <span class="startword">START</span>
       </div>
 
-      <!-- =========================
-           SVG CONTROLLER (single silhouette)
-      ========================== -->
+      <!-- ========================= CHUNKIER SVG CONTROLLER (no scaling hacks) ========================= -->
       <div class="pad-wrap">
         <div class="pad svg6" aria-hidden="true">
-          <!-- SVG silhouette lives BEHIND everything -->
-          <svg class="pad-silhouette" viewBox="0 0 820 260" role="img" aria-label="Game controller">
+          <!-- Controller body only (chunkier + taller center built into the path) -->
+          <svg class="pad-silhouette" viewBox="0 0 820 320" role="img" aria-label="Game controller">
             <defs>
               <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0" stop-color="#2e2e39"/>
@@ -79,63 +73,63 @@
               </filter>
             </defs>
 
-            <!-- Outer body: waisted + grips (decent “real controller” silhouette) -->
+            <!-- OUTER BODY (taller + thicker waist) -->
             <path
               filter="url(#softShadow)"
-              d="M130 70
-                 C70 82, 40 118, 48 162
-                 C56 208, 92 228, 132 226
-                 C182 224, 212 196, 248 176
-                 C276 160, 312 156, 410 156
-                 C508 156, 544 160, 572 176
-                 C608 196, 638 224, 688 226
-                 C728 228, 764 208, 772 162
-                 C780 118, 750 82, 690 70
-                 C642 60, 600 62, 560 80
-                 C520 98, 486 106, 410 106
-                 C334 106, 300 98, 260 80
-                 C220 62, 178 60, 130 70 Z"
+              d="M120 78
+                 C58 92, 32 132, 44 190
+                 C56 254, 102 282, 152 278
+                 C220 272, 250 232, 292 210
+                 C328 190, 366 182, 410 182
+                 C454 182, 492 190, 528 210
+                 C570 232, 600 272, 668 278
+                 C718 282, 764 254, 776 190
+                 C788 132, 762 92, 700 78
+                 C650 66, 604 70, 564 92
+                 C524 114, 488 126, 410 126
+                 C332 126, 296 114, 256 92
+                 C216 70, 170 66, 120 78 Z"
               fill="url(#bodyGrad)"
               stroke="rgba(255,255,255,.14)"
               stroke-width="8"
               stroke-linejoin="round"
             />
 
-            <!-- Inner trim -->
+            <!-- INNER TRIM -->
             <path
-              d="M150 88
-                 C102 96, 78 122, 86 152
-                 C94 186, 116 204, 150 202
-                 C198 200, 224 176, 258 156
-                 C290 136, 328 130, 410 130
-                 C492 130, 530 136, 562 156
-                 C596 176, 622 200, 670 202
-                 C704 204, 726 186, 734 152
-                 C742 122, 718 96, 670 88
-                 C632 82, 598 84, 566 98
-                 C532 114, 494 120, 410 120
-                 C326 120, 288 114, 254 98
-                 C222 84, 188 82, 150 88 Z"
+              d="M146 98
+                 C98 110, 78 138, 90 176
+                 C104 222, 132 242, 164 240
+                 C218 236, 244 206, 280 186
+                 C316 166, 354 158, 410 158
+                 C466 158, 504 166, 540 186
+                 C576 206, 602 236, 656 240
+                 C688 242, 716 222, 730 176
+                 C742 138, 722 110, 674 98
+                 C636 88, 600 92, 570 108
+                 C534 126, 496 136, 410 136
+                 C324 136, 286 126, 250 108
+                 C220 92, 184 88, 146 98 Z"
               fill="none"
               stroke="rgba(255,255,255,.10)"
               stroke-width="4"
               stroke-linejoin="round"
-              opacity=".8"
+              opacity=".85"
             />
 
-            <!-- Subtle shine -->
+            <!-- SHINE -->
             <path
-              d="M160 94
-                 C120 104, 96 126, 104 146
-                 C120 120, 156 106, 210 110
-                 C256 114, 300 130, 410 130
-                 C520 130, 564 114, 610 110
-                 C664 106, 700 120, 716 146
-                 C724 126, 700 104, 660 94
-                 C622 86, 594 90, 566 102
-                 C530 118, 494 124, 410 124
-                 C326 124, 290 118, 254 102
-                 C226 90, 198 86, 160 94 Z"
+              d="M156 104
+                 C124 114, 104 128, 112 146
+                 C132 124, 166 116, 210 120
+                 C260 124, 304 140, 410 140
+                 C516 140, 560 124, 610 120
+                 C654 116, 688 124, 708 146
+                 C716 128, 696 114, 664 104
+                 C632 96, 604 98, 578 112
+                 C540 132, 500 142, 410 142
+                 C320 142, 280 132, 242 112
+                 C216 98, 188 96, 156 104 Z"
               fill="url(#shineGrad)"
               opacity=".45"
             />
@@ -180,6 +174,7 @@
     </div>
   </section>
 
+  <!-- ========================= MAIN SITE ========================= -->
   <main id="main" class="main hidden">
     <header class="topbar">
       <div class="brand">
