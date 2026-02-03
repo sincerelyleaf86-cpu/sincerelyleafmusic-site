@@ -183,7 +183,7 @@ html, body{
 .pad.svg6{
   position:relative;
   width:min(520px, 96%);
-  aspect-ratio: 820 / 260;
+  aspect-ratio: 820 / 310; /* increased height */
   margin: 0 auto;
 }
 
