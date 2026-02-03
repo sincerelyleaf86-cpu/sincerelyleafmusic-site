@@ -1,8 +1,4 @@
 // app.js (FULL FILE)
-// Notes:
-// - Boot image rotates randomly using the list in data-images on #bootScene.
-// - START button hides boot and reveals main.
-// - Now Playing embed is loaded from /config.json (repo-controlled: only you can change it).
 
 document.addEventListener("DOMContentLoaded", () => {
   const startBtn = document.getElementById("startBtn");
@@ -14,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (year) year.textContent = new Date().getFullYear();
 
-  // Randomize boot image (avoids repeating last pick)
   if (bootScene) {
     const list = (bootScene.dataset.images || "")
       .split(",")
@@ -41,21 +36,17 @@ document.addEventListener("DOMContentLoaded", () => {
   function enterStudio() {
     if (boot) boot.classList.add("hidden");
     if (main) main.classList.remove("hidden");
-
-    // Optional: jump user to the first panel
     const videos = document.getElementById("videos");
     if (videos) window.location.hash = "#videos";
   }
 
   if (startBtn) startBtn.addEventListener("click", enterStudio);
 
-  // Keyboard support
   document.addEventListener("keydown", (e) => {
     if (!boot || boot.classList.contains("hidden")) return;
     if (e.key === "Enter" || e.key === " ") enterStudio();
   });
 
-  // Load player embed URL from config.json
   async function loadConfig() {
     try {
       const res = await fetch("/config.json", { cache: "no-store" });
@@ -75,9 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </iframe>
         `;
       }
-    } catch {
-      // silent fail: keeps the "PLAYER NOT SET" placeholder
-    }
+    } catch {}
   }
 
   loadConfig();

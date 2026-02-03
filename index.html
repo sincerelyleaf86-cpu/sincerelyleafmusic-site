@@ -1,11 +1,8 @@
 <!-- index.html (FULL FILE)
   Notes:
-  - Boot screen shows randomized pixel-art cover images (boot_scene_01..12.png).
-  - START button on a Sega-inspired 6-button controller enters the main site.
-  - This revision switches the controller to a "safe" 6-button silhouette that will NOT clip buttons on mobile.
-    (No clip-path boomerang; instead: a solid controller body + right-side bulge panel.)
-  - Main site keeps the same Genesis-case theme + grid background + blue Sega-style headers.
-  - Now Playing embed is controlled ONLY by you via config.json (repo-controlled).
+  - Controller body is now a single inline SVG (clean silhouette) so nothing floats/clips.
+  - Buttons/D-pad/Start are HTML elements positioned on top.
+  - This is the most stable way to get a “decent controller” look across desktop + mobile.
 -->
 <!doctype html>
 <html lang="en">
@@ -14,26 +11,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sincerely Leaf Music</title>
 
-  <!-- Minimal safety baseline while CSS loads -->
   <style>
     html,body{margin:0;padding:0;color:#e9e9f2;}
     .hidden{display:none !important;}
   </style>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
 
-  <!-- Main styles -->
   <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
-  <!-- =========================
-       BOOT SCREEN
-  ========================== -->
   <section id="boot" class="boot">
     <div class="boot-cover">
       <div class="case-header">
@@ -52,7 +43,6 @@
         <span class="chip">HUMAN SWING ENABLED</span>
       </div>
 
-      <!-- Boot image rotation area -->
       <div class="art-frame">
         <img
           id="bootScene"
@@ -63,21 +53,95 @@
         />
       </div>
 
-      <!-- Call to action -->
       <div class="press-start">
         <span class="press">PRESS</span>
         <span class="startword">START</span>
       </div>
 
       <!-- =========================
-           CONTROLLER (Stable 6-button controller)
-           Fixes:
-           - No more "floating" right-side buttons
-           - Controller body includes a dedicated right bulge panel behind the buttons
-           - Safer layout for mobile (no clipping masks that cut off children)
+           SVG CONTROLLER (single silhouette)
       ========================== -->
       <div class="pad-wrap">
-        <div class="pad genesis6" aria-hidden="true">
+        <div class="pad svg6" aria-hidden="true">
+          <!-- SVG silhouette lives BEHIND everything -->
+          <svg class="pad-silhouette" viewBox="0 0 820 260" role="img" aria-label="Game controller">
+            <defs>
+              <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2e2e39"/>
+                <stop offset="1" stop-color="#14141a"/>
+              </linearGradient>
+              <linearGradient id="shineGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="rgba(255,255,255,.16)"/>
+                <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+              </linearGradient>
+              <filter id="softShadow" x="-20%" y="-20%" width="140%" height="160%">
+                <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="rgba(0,0,0,.55)"/>
+              </filter>
+            </defs>
+
+            <!-- Outer body: waisted + grips (decent “real controller” silhouette) -->
+            <path
+              filter="url(#softShadow)"
+              d="M130 70
+                 C70 82, 40 118, 48 162
+                 C56 208, 92 228, 132 226
+                 C182 224, 212 196, 248 176
+                 C276 160, 312 156, 410 156
+                 C508 156, 544 160, 572 176
+                 C608 196, 638 224, 688 226
+                 C728 228, 764 208, 772 162
+                 C780 118, 750 82, 690 70
+                 C642 60, 600 62, 560 80
+                 C520 98, 486 106, 410 106
+                 C334 106, 300 98, 260 80
+                 C220 62, 178 60, 130 70 Z"
+              fill="url(#bodyGrad)"
+              stroke="rgba(255,255,255,.14)"
+              stroke-width="8"
+              stroke-linejoin="round"
+            />
+
+            <!-- Inner trim -->
+            <path
+              d="M150 88
+                 C102 96, 78 122, 86 152
+                 C94 186, 116 204, 150 202
+                 C198 200, 224 176, 258 156
+                 C290 136, 328 130, 410 130
+                 C492 130, 530 136, 562 156
+                 C596 176, 622 200, 670 202
+                 C704 204, 726 186, 734 152
+                 C742 122, 718 96, 670 88
+                 C632 82, 598 84, 566 98
+                 C532 114, 494 120, 410 120
+                 C326 120, 288 114, 254 98
+                 C222 84, 188 82, 150 88 Z"
+              fill="none"
+              stroke="rgba(255,255,255,.10)"
+              stroke-width="4"
+              stroke-linejoin="round"
+              opacity=".8"
+            />
+
+            <!-- Subtle shine -->
+            <path
+              d="M160 94
+                 C120 104, 96 126, 104 146
+                 C120 120, 156 106, 210 110
+                 C256 114, 300 130, 410 130
+                 C520 130, 564 114, 610 110
+                 C664 106, 700 120, 716 146
+                 C724 126, 700 104, 660 94
+                 C622 86, 594 90, 566 102
+                 C530 118, 494 124, 410 124
+                 C326 124, 290 118, 254 102
+                 C226 90, 198 86, 160 94 Z"
+              fill="url(#shineGrad)"
+              opacity=".45"
+            />
+          </svg>
+
+          <!-- D-pad -->
           <div class="pad-dpad">
             <span class="dp up"></span>
             <span class="dp down"></span>
@@ -86,10 +150,12 @@
             <span class="dp mid"></span>
           </div>
 
+          <!-- Start -->
           <div class="pad-center">
             <button id="startBtn" class="pad-start" type="button">START</button>
           </div>
 
+          <!-- 6 buttons -->
           <div class="pad-6btn">
             <div class="btn-row top">
               <span class="gbtn">X</span>
@@ -107,7 +173,6 @@
         <div class="pad-caption">Controller: connected</div>
       </div>
 
-      <!-- Your updated tagline text (dual stroke style) -->
       <p class="boot-tagline">
         <span class="tag-outline">LEVEL UP YOUR SOUND</span>
         <span class="tag-fill">LEVEL UP YOUR SOUND</span>
@@ -115,9 +180,6 @@
     </div>
   </section>
 
-  <!-- =========================
-       MAIN SITE (after boot)
-  ========================== -->
   <main id="main" class="main hidden">
     <header class="topbar">
       <div class="brand">
@@ -136,11 +198,9 @@
         <a href="#contact" class="nav-link">CONTACT</a>
       </nav>
 
-      <!-- YouTube button (red) -->
       <a class="pill pill-youtube" href="https://youtube.com/@YOURHANDLE" target="_blank" rel="noreferrer">YOUTUBE →</a>
     </header>
 
-    <!-- Main stage: left panel + right panel -->
     <section class="stage" id="videos">
       <div class="stage-left">
         <div class="panel">
@@ -153,13 +213,11 @@
             Sample-based producer blending AI, vinyl, and original composition through the MPC.
           </p>
 
-          <!-- Power buttons (requested) -->
           <div class="cta-row">
             <a class="power-btn" href="#beats">BEATS</a>
             <a class="power-btn" href="#contact">CONTACT</a>
           </div>
 
-          <!-- Player slot (you control via config.json) -->
           <div class="player-wrap" aria-label="Beat player">
             <div class="player-frame" id="playerSlot">
               <div class="player-empty">
@@ -184,7 +242,6 @@
           <span class="panel-chip">1080p</span>
         </div>
 
-        <!-- YouTube embed (replace YOUR_VIDEO_ID) -->
         <div class="video-wrap">
           <iframe
             title="Sincerely Leaf YouTube"
