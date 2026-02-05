@@ -1,223 +1,124 @@
-<!-- index.html (FULL FILE) — REPLACE ENTIRE FILE WITH THIS -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sincerely Leaf Music</title>
-
-  <style>
-    html,body{margin:0;padding:0;color:#e9e9f2;}
-    .hidden{display:none !important;}
-  </style>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="/styles.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sincerely_Leaf</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- ========================= BOOT SCREEN ========================= -->
-  <section id="boot" class="boot">
-    <div class="boot-cover">
-      <div class="case-header">
-        <div class="case-header-left">SINCERELYLEAFMUSIC.COM</div>
-        <div class="case-header-right">16-BIT BOOT</div>
-      </div>
+  <div class="grid-bg" aria-hidden="true"></div>
 
-      <h1 class="logo-title">
-        <span class="logo-outline">SINCERELY_LEAF</span>
-        <span class="logo-fill">SINCERELY_LEAF</span>
-      </h1>
-
-      <div class="case-subline">
-        <span class="chip">AI + VINYL + MPC</span>
-        <span class="divider">•</span>
-        <span class="chip">HUMAN SWING ENABLED</span>
-      </div>
-
-      <div class="art-frame">
-        <img
-          id="bootScene"
-          class="boot-art"
-          src="boot_scene_01.png"
-          alt="Boot cover art"
-          data-images="boot_scene_01.png,boot_scene_02.png,boot_scene_03.png,boot_scene_04.png,boot_scene_05.png,boot_scene_06.png,boot_scene_07.png,boot_scene_08.png,boot_scene_09.png,boot_scene_10.png,boot_scene_11.png,boot_scene_12.png"
-        />
-      </div>
-
-      <div class="press-start">
-        <span class="press">PRESS</span>
-        <span class="startword">START</span>
-      </div>
-
-      <!-- START BUTTON ONLY (NO CONTROLLER / NO SILHOUETTE) -->
-      <div class="start-only">
-        <button id="startBtn" class="start-only-btn" type="button" aria-label="Start">
-          START
-        </button>
-      </div>
-
-      <p class="boot-tagline">
-        <span class="tag-outline">LEVEL UP YOUR SOUND</span>
-        <span class="tag-fill">LEVEL UP YOUR SOUND</span>
-      </p>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-title">Sincerely_Leaf</div>
+      <div class="brand-sub">Fresno, CA • MPC • Samples • Soul</div>
     </div>
-  </section>
 
-  <!-- ========================= MAIN SITE ========================= -->
-  <main id="main" class="main hidden">
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-mark" aria-hidden="true"></div>
-        <div>
-          <div class="brand-name" data-text="SINCERELY_LEAF">SINCERELY_LEAF</div>
-          <div class="brand-tag">LEVEL SELECT // STUDIO MODE</div>
-        </div>
+    <nav class="nav">
+      <a class="navlink" href="#beats">Beats</a>
+      <a class="navlink" href="#about">About</a>
+      <a class="navlink" href="#contact">Contact</a>
+      <a class="navlink navlink-red" href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="panel" id="player">
+      <div class="panel-head">
+        <div class="panel-title">NOW PLAYING</div>
+        <div class="panel-chip">SC</div>
       </div>
 
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#beats" class="nav-link">BEATS</a>
-        <a href="#packs" class="nav-link">PACKS</a>
-        <a href="#videos" class="nav-link">VIDEOS</a>
-        <a href="#about" class="nav-link">ABOUT</a>
-        <a href="#contact" class="nav-link">CONTACT</a>
-      </nav>
-
-      <a class="pill pill-youtube" href="https://youtube.com/@YOURHANDLE" target="_blank" rel="noreferrer">YOUTUBE →</a>
-    </header>
-
-    <section class="stage" id="videos">
-      <div class="soundcloud-wrapper">
-  <iframe
-    id="scPlayer"
-    width="100%"
-    height="300"
-    scrolling="no"
-    frameborder="no"
-    allow="autoplay">
-  </iframe>
-</div>
-
-
-
-          <p class="panel-lead">
-            Sample-based producer blending AI, vinyl, and original composition through the MPC.
-          </p>
-
-          <div class="cta-row">
-            <a class="power-btn" href="#beats">BEATS</a>
-            <a class="power-btn" href="#contact">CONTACT</a>
-          </div>
-
-          <div class="player-wrap" aria-label="Beat player">
-            <div class="player-frame" id="playerSlot">
-              <div class="player-empty">
-                <div class="player-empty-title">PLAYER NOT SET</div>
-                <div class="player-empty-sub">
-                  Edit <strong>config.json</strong> to add your BeatStars/SoundCloud embed URL.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="statusbar">
-            <span class="dot"></span> SIGNAL: STABLE
-            <span class="sep">•</span> MODE: CREATIVE
-          </div>
-        </div>
-      </div>
-
-      <div class="stage-right panel">
-        <div class="panel-head">
-          <span class="panel-title" data-text="VIDEO FEED">VIDEO FEED</span>
-          <span class="panel-chip">1080p</span>
-        </div>
-
+      <div class="panel-body">
         <div class="soundcloud-wrapper">
-  <iframe id="scPlayer"
-    width="100%"
-    height="166"
-    frameborder="no"
-    allow="autoplay">
-  </iframe>
-</div>
+          <iframe
+            id="scPlayer"
+            width="100%"
+            height="300"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            title="Sincerely_Leaf SoundCloud Player">
+          </iframe>
+        </div>
       </div>
     </section>
 
-    <section id="beats" class="section">
-      <div class="section-head">
-        <h2 data-text="BEATS">BEATS</h2>
-        <p>Leases / exclusives.</p>
-      </div>
-    </section>
-
-    <section id="packs" class="section">
-      <div class="section-head">
-        <h2 data-text="PACKS">PACKS</h2>
-        <p>Sample packs + MPC kits.</p>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="section-head">
-        <h2 data-text="ABOUT">ABOUT</h2>
-        <p>AI + vinyl + original composition.</p>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-text">
-          <p>
-            I build atmosphere from fragments — then give it swing and soul through a hardware workflow.
-            I’ll show the full process: generating, sampling, chopping, arranging, and finishing.
+    <section class="grid-2">
+      <section class="panel" id="beats">
+        <div class="panel-head">
+          <div class="panel-title">BEATS</div>
+          <div class="panel-chip">CH 01</div>
+        </div>
+        <div class="panel-body">
+          <p class="muted">
+            Beats live on SoundCloud above. BeatStars + full store coming soon.
           </p>
-          <p class="muted">Collabs open with producers and artists.</p>
-        </div>
-
-        <div class="about-image">
-          <img src="about_screen.png" alt="About image" />
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="section-head">
-        <h2 data-text="CONTACT">CONTACT</h2>
-        <p>Collabs + inquiries.</p>
-      </div>
-
-      <div class="cards">
-        <article class="card">
-          <div class="card-top">
-            <span class="card-label">EMAIL</span>
-            <span class="card-chip">PRIMARY</span>
+          <div class="cta-row">
+            <a class="btn" href="#contact">LEASE / EXCLUSIVE</a>
+            <a class="btn" href="#about">STYLE / PROCESS</a>
           </div>
-          <p class="card-body">
-            <a class="inline" href="mailto:sincerelyleaf86@gmail.com">sincerelyleaf86@gmail.com</a>
+        </div>
+      </section>
+
+      <section class="panel" id="about">
+        <div class="panel-head">
+          <div class="panel-title">ABOUT</div>
+          <div class="panel-chip">ID</div>
+        </div>
+        <div class="panel-body">
+          <p>
+            I’m a sample-based producer from Fresno, CA using the AKAI MPC platform to bring ideas to life.
+            I generate original, copyright-free source material with AI and flip it into something with real soul and swing.
           </p>
-        </article>
-      </div>
+          <p class="muted">
+            Collaborations welcome — artists and producers.
+          </p>
+        </div>
+      </section>
     </section>
 
-    <footer class="footer">
-      <span>© <span id="year"></span> Sincerely Leaf Music</span>
-      <span>MODE: 16-BIT</span>
-    </footer>
+    <section class="panel" id="contact">
+      <div class="panel-head">
+        <div class="panel-title">CONTACT</div>
+        <div class="panel-chip">COMMS</div>
+      </div>
+      <div class="panel-body">
+        <p class="muted">Email for collabs, placements, and exclusives:</p>
+        <p class="contact-email">sincerelyleaf86@gmail.com</p>
+      </div>
+    </section>
   </main>
 
-  <script src="/app.js" defer></script>
-<script>
-fetch('config.json')
-  .then(response => response.json())
-  .then(data => {
-    const player = document.getElementById('scPlayer');
-    if (player && data.soundcloudEmbed) {
-      player.src = data.soundcloudEmbed;
-    }
-  })
-  .catch(error => console.error("Config load error:", error));
-</script></body>
+  <footer class="footer">
+    <span class="muted">© <span id="year"></span> Sincerely_Leaf</span>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Load SoundCloud embed URL from config.json and set iframe src
+    (async function () {
+      try {
+        const res = await fetch('/config.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('config.json not found');
+        const cfg = await res.json();
+
+        const iframe = document.getElementById('scPlayer');
+        if (!iframe) return;
+
+        if (cfg.soundcloudEmbed && typeof cfg.soundcloudEmbed === 'string') {
+          iframe.src = cfg.soundcloudEmbed;
+        } else {
+          console.warn('soundcloudEmbed missing in config.json');
+        }
+      } catch (e) {
+        console.error('Failed to load SoundCloud embed from config.json:', e);
+      }
+    })();
+  </script>
+</body>
 </html>
