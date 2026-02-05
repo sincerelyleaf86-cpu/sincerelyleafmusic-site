@@ -91,18 +91,15 @@
     </header>
 
     <section class="stage" id="videos">
-      <div class="stage-left">
-        <div class="panel">
-          <div class="panel-head">
-            <div class="panel-body">
-  <div class="video-container">
-    <iframe 
-      src="https://www.youtube.com/embed/videoseries?list=PLjEsmEE_uUf6DzGirVcALtL64GWF8HK62"
-      title="Sincerely_Leaf Playlist"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
-  </div>
+      <div class="soundcloud-wrapper">
+  <iframe
+    id="scPlayer"
+    width="100%"
+    height="300"
+    scrolling="no"
+    frameborder="no"
+    allow="autoplay">
+  </iframe>
 </div>
 
 
@@ -214,10 +211,13 @@
   <script src="/app.js" defer></script>
 <script>
 fetch('config.json')
-  .then(res => res.json())
+  .then(response => response.json())
   .then(data => {
-    document.getElementById('scPlayer').src = data.soundcloudEmbed;
-  });
-</script>
-</body>
+    const player = document.getElementById('scPlayer');
+    if (player && data.soundcloudEmbed) {
+      player.src = data.soundcloudEmbed;
+    }
+  })
+  .catch(error => console.error("Config load error:", error));
+</script></body>
 </html>
