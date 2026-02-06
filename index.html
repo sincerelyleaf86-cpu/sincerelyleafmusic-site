@@ -1,10 +1,12 @@
-<!-- index.html (FULL FILE) — REPLACE ENTIRE FILE WITH THIS -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sincerely Leaf Music</title>
+
+  <title>Sincerely_Leaf | West Coast Trap, Detroit Trap, Boom Bap & R&B Beats | California MPC Producer</title>
+
+  <meta name="description" content="California-based producer blending West Coast trap, Detroit trap, boom bap, R&B, and drumless instrumentals through an MPC workflow. AI + vinyl + original composition. Beats available for lease and exclusive licensing.">
 
   <style>
     html,body{margin:0;padding:0;color:#e9e9f2;}
@@ -20,6 +22,7 @@
 </head>
 
 <body>
+
   <!-- ========================= BOOT SCREEN ========================= -->
   <section id="boot" class="boot">
     <div class="boot-cover">
@@ -54,7 +57,6 @@
         <span class="startword">START</span>
       </div>
 
-      <!-- START BUTTON ONLY (NO CONTROLLER / NO SILHOUETTE) -->
       <div class="start-only">
         <button id="startBtn" class="start-only-btn" type="button" aria-label="Start">
           START
@@ -80,47 +82,42 @@
       </div>
 
       <nav class="nav" aria-label="Primary navigation">
-        <!-- BEATS now goes straight to BeatStars -->
-        <<a href="https://www.beatstars.com/sincerelyleaf86" class="nav-link" target="_blank" rel="noreferrer">BEATS</a>
-
+        <a href="https://www.beatstars.com/sincerelyleaf86" class="nav-link" target="_blank" rel="noreferrer">BEATS</a>
         <a href="#packs" class="nav-link">PACKS</a>
         <a href="#videos" class="nav-link">VIDEOS</a>
-        <a href="#about" class="nav-link">ABOUT</a><a href="mailto:contact@sincerelyleafmusic.com" class="nav-link">CONTACT</a>
+        <a href="#about" class="nav-link">ABOUT</a>
+        <a href="mailto:contact@sincerelyleafmusic.com" class="nav-link">CONTACT</a>
       </nav>
 
-      <div class="topbar-cta">
-<a class="power-btn" href="https://www.beatstars.com/sincerelyleaf86" target="_blank" rel="noreferrer">BEATS</a>
-        <a class="pill pill-youtube" href="https://www.youtube.com/@Sincerely_Leaf" target="_blank" rel="noreferrer">YOUTUBE →</a>
-
-      </div>
+      <a class="pill pill-youtube" href="https://www.youtube.com/@Sincerely_Leaf" target="_blank" rel="noreferrer">YOUTUBE →</a>
     </header>
 
     <section class="stage" id="videos">
       <div class="stage-left">
         <div class="panel">
-          <div class="panel-head">
-            <span class="panel-title" data-text="LATEST TRANSMISSION">LATEST TRANSMISSION</span>
-            <span class="panel-chip">CH 01</span>
+
+          <div class="video-container">
+            <iframe 
+              src="https://www.youtube.com/embed/videoseries?list=PLjEsmEE_uUf6DzGirVcALtL64GWF8HK62"
+              title="Sincerely_Leaf Playlist"
+              frameborder="0"
+              allowfullscreen>
+            </iframe>
           </div>
 
           <p class="panel-lead">
-            Sample-based producer blending AI, vinyl, and original composition through the MPC.
+            California-based producer blending West Coast trap, Detroit trap bounce, boom bap, R&B, and drumless textures through a hands-on MPC workflow.
           </p>
 
           <div class="cta-row">
-            <!-- BEATS button now goes straight to BeatStars -->
-           <a class="power-btn" href="https://www.beatstars.com/sincerelyleaf86" target="_blank" rel="noreferrer">BEATS</a>
-	   <a class="power-btn" href="Contact@Sincerelyleafmusic.com">CONTACT</a>
+            <a class="power-btn" href="https://www.beatstars.com/sincerelyleaf86" target="_blank" rel="noreferrer">BEATS</a>
+            <a class="power-btn" href="mailto:contact@sincerelyleafmusic.com">CONTACT</a>
           </div>
 
-          <!-- PLAYER SLOT (SoundCloud loads here) -->
           <div class="player-wrap" aria-label="Beat player">
             <div class="player-frame" id="playerSlot">
-              <div class="player-empty">
+              <div class="player-empty hidden">
                 <div class="player-empty-title">PLAYER NOT SET</div>
-                <div class="player-empty-sub">
-                  Edit <strong>config.json</strong> to add your BeatStars/SoundCloud embed URL.
-                </div>
               </div>
             </div>
           </div>
@@ -129,40 +126,38 @@
             <span class="dot"></span> SIGNAL: STABLE
             <span class="sep">•</span> MODE: CREATIVE
           </div>
+
         </div>
       </div>
 
-      <!-- RIGHT PANEL: YouTube playlist embed -->
       <div class="stage-right panel">
         <div class="panel-head">
           <span class="panel-title" data-text="VIDEO FEED">VIDEO FEED</span>
           <span class="panel-chip">1080p</span>
         </div>
 
-        <div class="panel-body">
-          <div class="video-container">
-            <iframe
-              src="https://www.youtube.com/embed/videoseries?list=PLjEsmEE_uUf6DzGirVcALtL64GWF8HK62"
-              title="Sincerely_Leaf Playlist"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          </div>
+        <div class="soundcloud-wrapper">
+          <iframe id="scPlayer"
+            width="100%"
+            height="166"
+            frameborder="no"
+            allow="autoplay">
+          </iframe>
         </div>
       </div>
     </section>
 
-    <!-- You can keep this section as a placeholder even though buttons jump to BeatStars -->
+    <!-- ========================= BEATS SECTION (SEO BOOST) ========================= -->
+
     <section id="beats" class="section">
       <div class="section-head">
         <h2 data-text="BEATS">BEATS</h2>
-        <p>
-          <a class="inline" href="https://www.beatstars.com/sincerelyleaf86" target="_blank" rel="noreferrer">
-            Open BeatStars store →
-          </a>
-        </p>
+        <p>West Coast trap, Detroit trap, boom bap, R&B & drumless instrumentals.</p>
       </div>
+
+      <p style="margin-top:12px; line-height:1.7;">
+        Sincerely_Leaf is a California-based sample-driven producer crafting West Coast trap, Detroit trap rhythms, boom bap drums, atmospheric R&B instrumentals, and drumless textures using a hands-on MPC workflow. Blending AI-generated textures, vinyl sampling, and original composition, all beats are available for lease and exclusive licensing.
+      </p>
     </section>
 
     <section id="packs" class="section">
@@ -175,16 +170,15 @@
     <section id="about" class="section">
       <div class="section-head">
         <h2 data-text="ABOUT">ABOUT</h2>
-        <p>AI + vinyl + original composition.</p>
+        <p>West Coast rooted. Genre flexible.</p>
       </div>
 
       <div class="about-grid">
         <div class="about-text">
           <p>
-            I build atmosphere from fragments — then give it swing and soul through a hardware workflow.
-            I’ll show the full process: generating, sampling, chopping, arranging, and finishing.
+            I build atmosphere from fragments — then give it swing and soul through hardware. My sound ranges from West Coast knock and Detroit bounce to boom bap grit, R&B warmth, and drumless mood.
           </p>
-          <p class="muted">Collabs open with producers and artists.</p>
+          <p class="muted">Open to exploring new genres and collaborating with artists and producers.</p>
         </div>
 
         <div class="about-image">
@@ -198,57 +192,24 @@
         <h2 data-text="CONTACT">CONTACT</h2>
         <p>Collabs + inquiries.</p>
       </div>
-
-      <div class="cards">
-        <article class="card">
-          <div class="card-top">
-            <span class="card-label">EMAIL</span>
-            <span class="card-chip">PRIMARY</span>
-          </div>
-          <p class="card-body">
-            <a class="inline" href="mailto:sincerelyleaf86@gmail.com">sincerelyleaf86@gmail.com</a>
-          </p>
-        </article>
-      </div>
     </section>
 
     <footer class="footer">
       <span>© <span id="year"></span> Sincerely Leaf Music</span>
       <span>MODE: 16-BIT</span>
     </footer>
+
   </main>
 
   <script src="/app.js" defer></script>
 
-  <!-- SoundCloud loader (injects iframe into #playerSlot without changing layout) -->
   <script>
-    (function(){
-      // year
-      var y = document.getElementById('year');
-      if (y) y.textContent = new Date().getFullYear();
-
-      function renderPlayer(src){
-        var slot = document.getElementById('playerSlot');
-        if (!slot) return;
-        slot.innerHTML =
-          '<iframe ' +
-          'src="' + src + '" ' +
-          'width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" ' +
-          'title="Sincerely_Leaf Player"></iframe>';
-      }
-
-      fetch('/config.json', { cache: 'no-store' })
-        .then(function(res){ return res.json(); })
-        .then(function(cfg){
-          if (cfg && cfg.soundcloudEmbed) {
-            renderPlayer(cfg.soundcloudEmbed);
-          }
-        })
-        .catch(function(err){
-          // leave the "PLAYER NOT SET" fallback intact if config fails
-          console.error('Player config load failed:', err);
-        });
-    })();
+    fetch('config.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('scPlayer').src = data.soundcloudEmbed;
+      });
   </script>
+
 </body>
 </html>
